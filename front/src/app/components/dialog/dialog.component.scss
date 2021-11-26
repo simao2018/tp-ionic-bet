@@ -1,0 +1,14 @@
+app-dialog{
+    .d-flex{
+        display: flex;
+        justify-content: space-between;
+
+        .close{
+            margin-top: -10px;
+        }
+    }
+
+    .content-wrapper{
+       padding-top: 20px;
+    }
+}
