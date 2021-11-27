@@ -6,6 +6,11 @@ import { UserModule } from '../modules/user/user.module';
 import { DatabaseService } from './database.service';
 import { User } from '../modules/user/user.entity';
 import * as EnvironnementJsonFile from '../environment/env.json'
+import { BetModule } from '../modules/bet/bet.module';
+import { TeamModule } from '../modules/team/team.module';
+import { MatchModule } from '../modules/match/match.module';
+import { Team } from '../modules/team/team.entity';
+import { Match } from '../modules/match/match.entity';
 
 
 const PATH = process.cwd()
@@ -25,7 +30,12 @@ const PATH = process.cwd()
       // logging: true,
     }),
     UserModule,
-    TypeOrmModule.forFeature([User])
+    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([Team]),
+    TypeOrmModule.forFeature([Match]),
+    BetModule,
+    TeamModule,
+    MatchModule,
   ],
   controllers: [AppController],
   providers: [

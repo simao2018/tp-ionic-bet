@@ -27,7 +27,7 @@ export class UserService {
 
             userResponse.succes = true;
             if (response) {
-                userResponse.user = response.toDto();
+                userResponse.user = response;
             }
         } catch (error) {
             console.log(error.message);

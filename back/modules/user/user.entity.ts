@@ -1,5 +1,6 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, OneToMany } from "typeorm";
 import { BaseEntity } from "../../entities/base.entity";
+import { Bet } from "../bet/bet.entity";
 import { UserDto } from "./user.dto";
 
 @Entity('user')
@@ -13,7 +14,8 @@ export class User extends BaseEntity {
     @Column('float', { name: 'credit', nullable: true })
     credit: number;
 
-
+    @OneToMany(() => Bet, bet => bet.user)
+    bets: Bet[]
     toDto(): UserDto {
         return {
             id: this.id,
@@ -28,5 +30,4 @@ export class User extends BaseEntity {
         this.password = dto.password;
         this.credit = dto.credit;
     }
-
 }

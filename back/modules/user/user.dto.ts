@@ -1,4 +1,6 @@
 import { ApiPropertyOptional } from "@nestjs/swagger";
+import { BetDto } from "../bet/bet.dto";
+import { Bet } from "../bet/bet.entity";
 import { GenericResponse } from "../generic/genericResponse";
 
 export class UserDto {
@@ -13,6 +15,9 @@ export class UserDto {
 
     @ApiPropertyOptional()
     credit?: number;
+
+    @ApiPropertyOptional({ type: () => BetDto, isArray: true })
+    bets?: BetDto[];
 
     @ApiPropertyOptional()
     access_token?: string;
