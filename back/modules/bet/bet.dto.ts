@@ -1,4 +1,5 @@
 import { ApiPropertyOptional } from "@nestjs/swagger";
+import { GenericResponse } from "../generic/genericResponse";
 import { UserDto } from "../user/user.dto";
 import { BetResult, BetState } from "./bet.entity";
 
@@ -26,4 +27,14 @@ export class BetDto {
 
     @ApiPropertyOptional({ type: () => UserDto })
     user: UserDto;
+}
+
+export class GetBetResponse extends GenericResponse {
+    @ApiPropertyOptional({ type: () => BetDto, isArray: false })
+    bet: BetDto
+}
+
+export class GetBetsResponse extends GenericResponse {
+    @ApiPropertyOptional({ type: () => BetDto, isArray: true })
+    bets: BetDto[]
 }
