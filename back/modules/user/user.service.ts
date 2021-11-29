@@ -25,7 +25,7 @@ export class UserService {
         try {
             const response = await this.userRepository.findOne({ where: { 'id': id } });
 
-            userResponse.succes = true;
+            userResponse.success = true;
             if (response) {
                 userResponse.user = response;
             }
@@ -77,7 +77,7 @@ export class UserService {
             console.log(`🚀 ~ response`, response);
 
 
-            response.succes = true;
+            response.success = true;
         } catch (err) {
             console.log(`🚀 ~ err`, err);
             response.handleError(err.message);
