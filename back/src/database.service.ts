@@ -54,16 +54,16 @@ export class DatabaseService {
                     {
                         id_team_away: team_away.id,
                         id_team_home: team_home.id,
-                        quote_away: Math.floor(Math.random() * (5 - 1 + 1)) + 1,
-                        quote_null: Math.floor(Math.random() * (5 - 1 + 1)) + 1,
-                        quote_home: Math.floor(Math.random() * (5 - 1 + 1)) + 1,
+                        quote_away: Math.floor(Math.random() * (3.9 - 1.8 + 1)) + 1.8,
+                        quote_null: Math.floor(Math.random() * (1.9 - 1.1 + 1)) + 1.1,
+                        quote_home: Math.floor(Math.random() * (1.9 - 1.1 + 1)) + 1.1,
                         team_home: team_home,
                         team_away: team_away,
                     }
                 ];
 
                 for (const match of matchList) {
-                    const getMatch = await this.matchRepository.findOne({ where: { id: match.id } });
+                    const getMatch = await this.matchRepository.findOne({ where: { id_team_home: match.id_team_home } });
                     if (getMatch)
                         continue;
 
@@ -78,44 +78,56 @@ export class DatabaseService {
         const teams: TeamDto[] = [
             {
                 label: 'Olympique de Marseille',
+                logo: 'https://ssl.gstatic.com/onebox/media/sports/logos/KfBX1kHNj26r9NxpqNaTkA_96x96.png'
             },
             {
-                label: 'Olympique Lyonnais'
+                label: 'Olympique Lyonnais',
+                logo: 'https://ssl.gstatic.com/onebox/media/sports/logos/SrKK55dUkCxe4mJsyshfCg_96x96.png'
             },
             {
-                label: 'Paris St-Germain'
+                label: 'Paris St-Germain',
+                logo: 'https://i1.wp.com/i.imgur.com/v3w1LrB.png?resize=256%2C256&ssl=1'
             },
             {
-                label: 'Real Madrid'
+                label: 'Real Madrid',
+                logo: 'https://ssl.gstatic.com/onebox/media/sports/logos/Th4fAVAZeCJWRcKoLW7koA_96x96.png'
             },
             {
-                label: 'Fc Barcelona'
+                label: 'Fc Barcelona',
+                logo: 'https://icons.iconarchive.com/icons/giannis-zographos/spanish-football-club/256/FC-Barcelona-icon.png'
             },
             {
-                label: 'Bayern Munich FC'
+                label: 'Bayern Munich FC',
+                logo: 'https://cdn.icon-icons.com/icons2/1018/PNG/256/Bayern_Munchen_icon-icons.com_75868.png'
             },
             {
-                label: 'Manchester city'
+                label: 'Manchester city',
+                logo: 'https://www.gamesatlas.com/images/football/teams/england/manchester-city.png',
             },
             {
-                label: 'Manchester utd'
+                label: 'Manchester utd',
+                logo: 'https://companiesmarketcap.com/img/company-logos/256/MANU.png'
             },
             {
-                label: 'Dortmund FC'
+                label: 'Dortmund FC',
+                logo: 'https://aux.iconspalace.com/uploads/borussia-dortmund-logo-icon-256.png'
             },
             {
-                label: 'Chelsea FC'
+                label: 'Chelsea FC',
+                logo: 'https://icons.iconarchive.com/icons/giannis-zographos/english-football-club/256/Chelsea-FC-icon.png'
             },
             {
-                label: 'Arsenal FC'
+                label: 'Arsenal FC',
+                logo: 'https://idreamleaguesoccerkits.com/wp-content/uploads/2018/01/Arsenal-Logo-URL-512x512.png'
             },
             {
-                label: 'Juventus'
+                label: 'Juventus',
+                logo: 'https://aux.iconspalace.com/uploads/juventus-logo-icon-256.png'
             }
         ];
 
         for (const team of teams) {
-            const getTeam = await this.teamRepository.findOne({ where: { label: team.id } });
+            const getTeam = await this.teamRepository.findOne({ where: { label: team.label } });
             if (getTeam)
                 continue;
             console.log(`add team : ${team.label}`);
