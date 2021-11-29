@@ -1,13 +1,8 @@
 import { Column, Entity, OneToOne } from "typeorm";
 import { ResultDto } from "../dto/result.dto";
 import { BaseEntity } from "./base.entity";
+import { MatchResult } from "../../shared/constant";
 
-export enum MatchResult {
-    HOME = "home",
-    AWAY = "away",
-    DRAW = "draw",
-    UNSET = "UNSET"
-}
 
 @Entity({ name: 'result' })
 export class Result extends BaseEntity {

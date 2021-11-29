@@ -1,5 +1,5 @@
 import { ApiPropertyOptional } from "@nestjs/swagger";
-import { MatchResult } from "../entities/result.entity";
+import { MatchResult } from "../../shared/constant";
 
 export class ResultDto {
     @ApiPropertyOptional()
