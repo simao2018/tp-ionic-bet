@@ -9,12 +9,24 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Liste des matchs</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+    <ion-segment *ngFor="let match of matchList" (ionChange)="segmentChanged($event)" value="sunny">
+      <ion-segment-button value="sunny">
+        <ion-label>{{ match.team_home.label }}</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="rainy">
+        <ion-label>Match null</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="rain">
+        <ion-label>{{ match.team_away.label }}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </div>
 </ion-content>
