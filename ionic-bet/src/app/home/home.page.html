@@ -17,7 +17,7 @@
 
     <ion-segment *ngFor="let match of matchList" (ionChange)="segmentChanged($event)" value="sunny">
       <ion-segment-button value="sunny">
-        <ion-label>{{ match.team_home.label }}</ion-label>
+        <img [src]="match.team_home.logo" alt="logo" />
       </ion-segment-button>
 
       <ion-segment-button value="rainy">
@@ -25,7 +25,7 @@
       </ion-segment-button>
 
       <ion-segment-button value="rain">
-        <ion-label>{{ match.team_away.label }}</ion-label>
+        <img [src]="match.team_away.logo" alt="logo" />
       </ion-segment-button>
     </ion-segment>
   </div>
