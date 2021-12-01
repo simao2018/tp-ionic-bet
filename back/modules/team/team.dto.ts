@@ -9,5 +9,8 @@ export class TeamDto {
 
     @ApiPropertyOptional()
     logo?: string;
+
+    @ApiPropertyOptional()
+    sigle?: string;
 }
 

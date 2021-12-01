@@ -11,11 +11,14 @@ export class Team extends BaseEntity {
     @Column('varchar', { name: 'logo', length: 255, nullable: true })
     logo?: string;
 
+    @Column('varchar', { name: 'sigle', length: 15, nullable: true })
+    sigle?: string;
     toDto(): TeamDto {
         return {
             id: this.id,
             label: this.label,
-            logo: this.logo
+            logo: this.logo,
+            sigle: this.sigle,
         }
     }
 
@@ -23,5 +26,6 @@ export class Team extends BaseEntity {
         this.id = dto.id;
         this.label = dto.label;
         this.logo = dto.logo;
+        this.sigle = dto.sigle;
     }
 }

@@ -1,6 +1,6 @@
 #container {
   display: block;
-  margin:20px 20px;
+  margin:150px 20px;
 }
 
 #container strong {
@@ -19,4 +19,15 @@
 
 #container a {
   text-decoration: none;
+}
+
+ion-segment-button{
+  width: 20px;
+  margin-top: 10px;
+  border: 1px solid;
+  margin-left: 10px;
+
+  img{
+    height: 30px;
+  }
 }

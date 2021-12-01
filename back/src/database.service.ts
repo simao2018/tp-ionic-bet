@@ -78,51 +78,63 @@ export class DatabaseService {
         const teams: TeamDto[] = [
             {
                 label: 'Olympique de Marseille',
-                logo: 'https://ssl.gstatic.com/onebox/media/sports/logos/KfBX1kHNj26r9NxpqNaTkA_96x96.png'
+                logo: 'https://ssl.gstatic.com/onebox/media/sports/logos/KfBX1kHNj26r9NxpqNaTkA_96x96.png',
+                sigle: 'OM'
             },
             {
                 label: 'Olympique Lyonnais',
-                logo: 'https://ssl.gstatic.com/onebox/media/sports/logos/SrKK55dUkCxe4mJsyshfCg_96x96.png'
+                logo: 'https://ssl.gstatic.com/onebox/media/sports/logos/SrKK55dUkCxe4mJsyshfCg_96x96.png',
+                sigle: 'OL'
             },
             {
                 label: 'Paris St-Germain',
-                logo: 'https://i1.wp.com/i.imgur.com/v3w1LrB.png?resize=256%2C256&ssl=1'
+                logo: 'https://i1.wp.com/i.imgur.com/v3w1LrB.png?resize=256%2C256&ssl=1',
+                sigle: 'PSG',
             },
             {
                 label: 'Real Madrid',
-                logo: 'https://ssl.gstatic.com/onebox/media/sports/logos/Th4fAVAZeCJWRcKoLW7koA_96x96.png'
+                logo: 'https://ssl.gstatic.com/onebox/media/sports/logos/Th4fAVAZeCJWRcKoLW7koA_96x96.png',
+                sigle: 'R. Madrid'
             },
             {
                 label: 'Fc Barcelona',
-                logo: 'https://icons.iconarchive.com/icons/giannis-zographos/spanish-football-club/256/FC-Barcelona-icon.png'
+                logo: 'https://icons.iconarchive.com/icons/giannis-zographos/spanish-football-club/256/FC-Barcelona-icon.png',
+                sigle: 'FCB'
             },
             {
                 label: 'Bayern Munich FC',
-                logo: 'https://cdn.icon-icons.com/icons2/1018/PNG/256/Bayern_Munchen_icon-icons.com_75868.png'
+                logo: 'https://cdn.icon-icons.com/icons2/1018/PNG/256/Bayern_Munchen_icon-icons.com_75868.png',
+                sigle: 'Bay FC'
             },
             {
                 label: 'Manchester city',
                 logo: 'https://www.gamesatlas.com/images/football/teams/england/manchester-city.png',
+                sigle: 'Man City'
             },
             {
                 label: 'Manchester utd',
-                logo: 'https://companiesmarketcap.com/img/company-logos/256/MANU.png'
+                logo: 'https://companiesmarketcap.com/img/company-logos/256/MANU.png',
+                sigle: 'Man Utd'
             },
             {
                 label: 'Dortmund FC',
-                logo: 'https://aux.iconspalace.com/uploads/borussia-dortmund-logo-icon-256.png'
+                logo: 'https://aux.iconspalace.com/uploads/borussia-dortmund-logo-icon-256.png',
+                sigle: 'Dort. FC'
             },
             {
                 label: 'Chelsea FC',
-                logo: 'https://icons.iconarchive.com/icons/giannis-zographos/english-football-club/256/Chelsea-FC-icon.png'
+                logo: 'https://icons.iconarchive.com/icons/giannis-zographos/english-football-club/256/Chelsea-FC-icon.png',
+                sigle: 'Chel. FC'
             },
             {
                 label: 'Arsenal FC',
-                logo: 'https://idreamleaguesoccerkits.com/wp-content/uploads/2018/01/Arsenal-Logo-URL-512x512.png'
+                logo: 'https://idreamleaguesoccerkits.com/wp-content/uploads/2018/01/Arsenal-Logo-URL-512x512.png',
+                sigle: 'Ars. FC'
             },
             {
                 label: 'Juventus',
-                logo: 'https://aux.iconspalace.com/uploads/juventus-logo-icon-256.png'
+                logo: 'https://aux.iconspalace.com/uploads/juventus-logo-icon-256.png',
+                sigle: 'Juv'
             }
         ];
 
