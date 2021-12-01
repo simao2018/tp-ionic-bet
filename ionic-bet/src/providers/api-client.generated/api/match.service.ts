@@ -11,23 +11,22 @@
  */
 /* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional } from '@angular/core';
-import {
-    HttpClient, HttpHeaders, HttpParams,
-    HttpResponse, HttpEvent, HttpParameterCodec
-} from '@angular/common/http';
-import { CustomHttpParameterCodec } from '../encoder';
-import { Observable } from 'rxjs';
+import { Inject, Injectable, Optional }                      from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams,
+         HttpResponse, HttpEvent, HttpParameterCodec
+        }       from '@angular/common/http';
+import { CustomHttpParameterCodec }                          from '../encoder';
+import { Observable }                                        from 'rxjs';
 
 import { GetMatchList } from '../model/models';
 
-import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
-import { Configuration } from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
+import { Configuration }                                     from '../configuration';
 
 
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class MatchService {
 
@@ -36,7 +35,7 @@ export class MatchService {
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
 
-    constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (configuration) {
             this.configuration = configuration;
         }
@@ -66,16 +65,16 @@ export class MatchService {
 
         if (typeof value === "object") {
             if (Array.isArray(value)) {
-                (value as any[]).forEach(elem => httpParams = this.addToHttpParamsRecursive(httpParams, elem, key));
+                (value as any[]).forEach( elem => httpParams = this.addToHttpParamsRecursive(httpParams, elem, key));
             } else if (value instanceof Date) {
                 if (key != null) {
                     httpParams = httpParams.append(key,
                         (value as Date).toISOString().substr(0, 10));
                 } else {
-                    throw Error("key may not be null if value is Date");
+                   throw Error("key may not be null if value is Date");
                 }
             } else {
-                Object.keys(value).forEach(k => httpParams = this.addToHttpParamsRecursive(
+                Object.keys(value).forEach( k => httpParams = this.addToHttpParamsRecursive(
                     httpParams, value[k], key != null ? `${key}.${k}` : k));
             }
         } else if (key != null) {
@@ -91,10 +90,10 @@ export class MatchService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getMatchs(observe?: 'body', reportProgress?: boolean, options?: { httpHeaderAccept?: 'application/json', }): Observable<GetMatchList>;
-    public getMatchs(observe?: 'response', reportProgress?: boolean, options?: { httpHeaderAccept?: 'application/json', }): Observable<HttpResponse<GetMatchList>>;
-    public getMatchs(observe?: 'events', reportProgress?: boolean, options?: { httpHeaderAccept?: 'application/json', }): Observable<HttpEvent<GetMatchList>>;
-    public getMatchs(observe: any = 'body', reportProgress: boolean = false, options?: { httpHeaderAccept?: 'application/json', }): Observable<any> {
+    public getMatchs(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<GetMatchList>;
+    public getMatchs(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<GetMatchList>>;
+    public getMatchs(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<GetMatchList>>;
+    public getMatchs(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -113,7 +112,7 @@ export class MatchService {
 
 
         let responseType_: 'text' | 'json' = 'json';
-        if (localVarHttpHeaderAcceptSelected && localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        if(localVarHttpHeaderAcceptSelected && localVarHttpHeaderAcceptSelected.startsWith('text')) {
             responseType_ = 'text';
         }
 
