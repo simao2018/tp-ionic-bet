@@ -11,7 +11,7 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
-  app.enableCors({ origin: ['http://localhost:4200'], credentials: true })
+  app.enableCors({ origin: ['http://localhost:8100'], credentials: true })
 
   const config = new DocumentBuilder()
     .setTitle('Template')
@@ -36,6 +36,6 @@ async function bootstrap() {
     },
   })
 
-  await app.listen(API_PORT);
+  await app.listen(3018);
 }
 bootstrap();

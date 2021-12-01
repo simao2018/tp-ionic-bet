@@ -3,7 +3,7 @@ import { Column } from "typeorm";
 
 export class GenericResponse {
     @ApiProperty()
-    succes: boolean;
+    success: boolean;
 
     @ApiProperty()
     message: string;
@@ -13,7 +13,7 @@ export class GenericResponse {
     }
 
     public handleError(error: any) {
-        this.succes = false;
+        this.success = false;
 
         this.message = error.message;
     }
