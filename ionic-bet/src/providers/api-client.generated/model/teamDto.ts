@@ -14,5 +14,7 @@
 export interface TeamDto { 
     id?: string;
     label?: string;
+    logo?: string;
+    sigle?: string;
 }
 
