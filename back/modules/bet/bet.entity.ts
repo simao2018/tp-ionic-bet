@@ -55,6 +55,7 @@ export class Bet extends BaseEntity {
             gain: this.gain,
             id_user: this.id_user,
             user: this.user ? this.user.toDto() : null,
+            matchsSelected: this.matchs_selected ? this.matchs_selected.map(x => x.toDto()) : []
         }
     }
 
@@ -66,5 +67,16 @@ export class Bet extends BaseEntity {
         this.quote_total = dto.quote_total;
         this.gain = dto.gain;
         this.id_user = dto.id_user;
+
+        if (dto.matchsSelected) {
+            if (!this.matchs_selected?.length)
+                this.matchs_selected = [];
+
+            for (const item of dto.matchsSelected) {
+                const match_selected = new MatchSelected();
+                match_selected.fromDto(item);
+                this.matchs_selected.push(match_selected);
+            }
+        }
     }
 }

@@ -22,7 +22,7 @@ export class BetController {
 
             const getResponse = await this.betRepository.find();
 
-            response.bets = getResponse ? getResponse : [];
+            response.bets = getResponse ? getResponse.map(x => x.toDto()) : [];
             response.success = true;
 
         } catch (e) {
