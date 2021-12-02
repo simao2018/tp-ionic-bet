@@ -29,5 +29,17 @@ export class User extends BaseEntity {
         this.email = dto.email;
         this.password = dto.password;
         this.credit = dto.credit;
+
+        if (dto.bets) {
+
+            if (!this.bets?.length)
+                this.bets = [];
+
+            for (const item of dto.bets) {
+                const bet = new Bet();
+                bet.fromDto(item);
+                this.bets.push(bet);
+            }
+        }
     }
 }

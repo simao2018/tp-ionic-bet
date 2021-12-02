@@ -27,7 +27,7 @@ export class UserService {
 
             userResponse.success = true;
             if (response) {
-                userResponse.user = response;
+                userResponse.user = response.toDto();
             }
         } catch (error) {
             console.log(error.message);
@@ -69,7 +69,7 @@ export class UserService {
             const jwt = await this.jwtService.signAsync(payload);
             console.log(`🚀 ~ jwt`, jwt);
 
-            response.user = userResponse;
+            response.user = userResponse.toDto();
             response.user.access_token = jwt;
 
             // res.cookie('token', jwt);
