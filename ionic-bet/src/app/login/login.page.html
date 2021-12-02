@@ -3,13 +3,21 @@
     <h1>Login</h1>
   </div>
 
-  <form id="form">
+  <form id="form" (submit)="login()" style="margin-bottom: 30px;">
     <ion-item style="margin-bottom: 30px;">
-      <ion-input type="text" placeholder="adresse e-mail"></ion-input>
+      <ion-input type="text" [(ngModel)]="loginModel.email" placeholder="adresse e-mail" name="email" required>
+      </ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input type="password" placeholder="mot de passe"></ion-input>
+    <ion-item style="margin-bottom: 30px;">
+      <ion-input type="password" [(ngModel)]="loginModel.password" placeholder="mot de passe" name="password" required>
+      </ion-input>
     </ion-item>
-    <ion-button expand="block">Login</ion-button>
+
+
+    <ion-button type="submit" [disabled]="!isFieldCorrect()" expand="block">Login</ion-button>
   </form>
+
+  <div *ngIf="loginError" style="width: 100%;text-align: center;">
+    <ion-label color="danger">{{ loginError }}</ion-label>
+  </div>
 </ion-content>

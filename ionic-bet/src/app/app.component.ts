@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { AuthService } from '../global/auth.service';
 import { LoginPage } from './login/login.page';
 import { ViewBetPage } from './modal/view-bet/view-bet.page';
 
@@ -12,8 +13,13 @@ import { ViewBetPage } from './modal/view-bet/view-bet.page';
 export class AppComponent {
   constructor(
     public modalController: ModalController,
-    public router: Router
+    public router: Router,
+    public authService: AuthService,
   ) { }
+
+  ngOnInit() {
+    console.log('auth : ', this.authService.isConnected)
+  }
 
   async openBetModal() {
     const modal = await this.modalController.create({

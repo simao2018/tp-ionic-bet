@@ -1,6 +1,6 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
-  <ion-tabs *ngIf="false">
+  <ion-tabs *ngIf="authService.isConnected">
     <ion-tab-bar slot="bottom">
 
       <ion-tab-button tab="home">

@@ -10,6 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomInterceptor } from '../global/interceptor.service';
 import { BASE_PATH } from '../providers/api-client.generated';
 import { ViewBetPageModule } from './modal/view-bet/view-bet.module';
+import { AuthService } from '../global/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,8 @@ import { ViewBetPageModule } from './modal/view-bet/view-bet.module';
       useClass: IonicRouteStrategy,
     },
     { provide: BASE_PATH, useValue: 'http://localhost:3018' },
-    { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },
+    AuthService
   ],
   bootstrap: [AppComponent],
   exports: [],
