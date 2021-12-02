@@ -55,10 +55,10 @@ export class UserService {
 
             const userResponse = await this.userRepository.findOne({ where: { email: request.email } });
             if (!userResponse)
-                throw new Error('user not found')
+                throw new NotFoundException('cet utilisateur n\'existe pas.');
 
             if (!await bcrypt.compare(request.password, userResponse.password))
-                throw new Error('password or user not found')
+                throw new NotFoundException('password or user not found')
 
 
             const payload: JwtPayload = {
