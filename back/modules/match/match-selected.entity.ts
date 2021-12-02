@@ -1,5 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToOne } from "typeorm";
 import { BaseEntity } from "../../entities/base.entity";
+import { Result } from "../../entities/result.entity";
 import { Bet } from "../bet/bet.entity";
 import { MatchSelectedDto } from "./match.dto";
 import { Match } from "./match.entity";
@@ -16,17 +17,23 @@ export class MatchSelected extends BaseEntity {
     @ManyToOne(() => Bet, bet => bet.matchs_selected)
     bet: Bet;
 
+    @OneToOne(() => Result)
+    @JoinColumn({ name: 'id_result' })
+    result: Result;
+
     toDto(): MatchSelectedDto {
         return {
             id: this.id,
             id_match: this.id_match,
             match: this.match ? this.match.toDto() : null,
             bet: this.bet ? this.bet.toDto() : null,
+            result: this.result ? this.result.toDto() : null,
         }
     }
 
     fromDto(dto: MatchSelectedDto) {
         this.id = dto.id;
         this.id_match = dto.id_match;
+        
     }
 }

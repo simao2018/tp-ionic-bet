@@ -48,6 +48,9 @@ export class MatchSelectedDto {
 
     @ApiPropertyOptional({ type: () => BetDto, isArray: false })
     bet: BetDto;
+
+    @ApiPropertyOptional({ type: () => ResultDto, isArray: false })
+    result?: ResultDto
 }
 
 export class GetMatchList extends GenericResponse {

@@ -18,7 +18,6 @@ export class MatchController {
     @ApiOperation({ summary: 'get all match', operationId: 'getMatchs' })
     @ApiResponse({ status: 200, description: 'get all match', type: GetMatchList })
     async getMatchs(): Promise<GetMatchList> {
-        console.log('loading...');
         const response = new GetMatchList();
         try {
 
