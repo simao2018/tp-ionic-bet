@@ -1,0 +1,71 @@
+.header {
+  height: 180px;
+  background-color: #03A9F4;
+  width: 100%;
+  padding-top: 1px;
+}
+
+.header h2 {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 0px 10px;
+}
+.followings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.followings p {
+  color: white;
+  margin: 8px 0px 0px 0px;
+}
+.img-box {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 130px;
+  width: 130px;
+}
+
+.border-white {
+  border: white solid 4px;
+  border-radius: 50%;
+  width: fit-content;
+}
+
+.border-blue {
+  border: 7px solid #006bbf;
+  border-radius: 50%;
+  width: fit-content;
+}
+
+
+.flex {
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+.Profilbutton {
+  margin-bottom: 30px
+}
+
+.test {
+
+
+  width: 100%;
+  min-height: 60px;
+}
+
+.test1 {
+
+
+  width: 100%;
+  min-height: 60px;
+}
