@@ -1,3 +1,23 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
+  <ion-tabs *ngIf="false">
+    <ion-tab-bar slot="bottom">
+
+      <ion-tab-button tab="home">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Accueil</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="openBetModal()">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge>6</ion-badge>
+      </ion-tab-button>
+
+      <ion-tab-button>
+        <ion-icon name="reader-outline"></ion-icon>
+        <ion-label>Mes paris</ion-label>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-app>

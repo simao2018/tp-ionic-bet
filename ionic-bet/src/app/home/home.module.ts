@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { MatchService } from '../../providers/api-client.generated/api/match.service';
+import { ToolbarModule } from '../component/toolbar/toolbar.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { MatchService } from '../../providers/api-client.generated/api/match.ser
     CommonModule,
     FormsModule,
     IonicModule,
+    ToolbarModule,
     HomePageRoutingModule
   ],
   declarations: [HomePage],

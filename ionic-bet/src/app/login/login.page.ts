@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../providers/api-client.generated';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
+  }
+
+  login() {
+    //const response = await this.userService
   }
 
 }

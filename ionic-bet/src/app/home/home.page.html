@@ -1,29 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title size="large">Liste des matchs</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<app-toolbar></app-toolbar>
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Liste des matchs</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container">
-
-    <ion-segment *ngFor="let match of matchList" (ionChange)="segmentChanged($event)" value="sunny">
-      <ion-segment-button value="sunny">
+    <h1>Commencez vos paris</h1>
+    <ion-segment color="success" *ngFor="let match of matchList;let index=index;" (ionChange)="segmentChanged($event)"
+      value="sunny">
+      <ion-segment-button value="{{ match.id_team_home }}">
         <img [src]="match.team_home.logo" alt="logo" />
+        <ion-label>{{ match.quote_home }}</ion-label>
       </ion-segment-button>
 
-      <ion-segment-button value="rainy">
-        <ion-label>Match null</ion-label>
+      <ion-segment-button value="{{ match.id + '_' + index }}">
+        <ion-label>Match nul <br> {{ match.quote_null }} </ion-label>
       </ion-segment-button>
 
-      <ion-segment-button value="rain">
+      <ion-segment-button value="{{ match.id_team_away }}">
         <img [src]="match.team_away.logo" alt="logo" />
+        <ion-label>{{ match.quote_away }}</ion-label>
       </ion-segment-button>
     </ion-segment>
   </div>

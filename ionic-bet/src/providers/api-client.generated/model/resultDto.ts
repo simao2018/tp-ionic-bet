@@ -14,6 +14,7 @@
 export interface ResultDto { 
     id?: string;
     value?: ResultDto.ValueEnum;
+    type?: ResultDto.TypeEnum;
 }
 export namespace ResultDto {
     export type ValueEnum = 'home' | 'away' | 'draw' | 'UNSET';
@@ -22,6 +23,12 @@ export namespace ResultDto {
         Away: 'away' as ValueEnum,
         Draw: 'draw' as ValueEnum,
         Unset: 'UNSET' as ValueEnum
+    };
+    export type TypeEnum = 'USER' | 'COMPUTER' | 'UNDEFINED';
+    export const TypeEnum = {
+        User: 'USER' as TypeEnum,
+        Computer: 'COMPUTER' as TypeEnum,
+        Undefined: 'UNDEFINED' as TypeEnum
     };
 }
 

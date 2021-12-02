@@ -1,4 +1,3 @@
-import { InputModule } from './../component/input/input.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -14,9 +13,8 @@ import { RegisterPage } from './register.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    InputModule,
     RegisterPageRoutingModule
   ],
   declarations: [RegisterPage]
 })
-export class RegisterPageModule {}
+export class RegisterPageModule { }

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { BetService, MatchDto } from '../../providers/api-client.generated';
 import { MatchService } from '../../providers/api-client.generated/api/match.service';
 import { GetMatchList } from '../../providers/api-client.generated/model/getMatchList';
+import { MatchSelectedDto } from '../../providers/api-client.generated/model/matchSelectedDto';
 
 @Component({
   selector: 'app-home',
@@ -11,21 +13,18 @@ import { GetMatchList } from '../../providers/api-client.generated/model/getMatc
 export class HomePage {
 
   matchList: MatchDto[] = [];
+  matchSelectedList: MatchSelectedDto[] = [];
   constructor(
     private matchService: MatchService,
   ) { }
 
   async ngOnInit() {
-    console.log(`load api request`);
     const response: GetMatchList = await this.matchService.getMatchs().toPromise();
-    if (response.success)
-      console.log('matchs : ', response.matchs);
-
     this.matchList = response.matchs;
-
   }
 
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
   }
+
 }

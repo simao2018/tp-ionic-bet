@@ -16,6 +16,7 @@ model/getLoginRequest.ts
 model/getMatchList.ts
 model/getUserResponse.ts
 model/matchDto.ts
+model/matchSelectedDto.ts
 model/models.ts
 model/resultDto.ts
 model/teamDto.ts

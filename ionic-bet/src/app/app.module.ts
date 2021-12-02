@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomInterceptor } from '../global/interceptor.service';
 import { BASE_PATH } from '../providers/api-client.generated';
+import { ViewBetPageModule } from './modal/view-bet/view-bet.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { BASE_PATH } from '../providers/api-client.generated';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    ViewBetPageModule,
   ],
   providers: [
     {

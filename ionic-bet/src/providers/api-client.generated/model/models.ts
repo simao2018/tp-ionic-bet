@@ -4,6 +4,7 @@ export * from './getLoginRequest';
 export * from './getMatchList';
 export * from './getUserResponse';
 export * from './matchDto';
+export * from './matchSelectedDto';
 export * from './resultDto';
 export * from './teamDto';
 export * from './userDto';

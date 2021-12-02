@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },  {
+    path: 'view-bet',
+    loadChildren: () => import('./modal/view-bet/view-bet.module').then( m => m.ViewBetPageModule)
   },
+
 
 ];
 

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { UserDto } from './userDto';
+import { MatchSelectedDto } from './matchSelectedDto';
 
 
 export interface BetDto { 
@@ -21,6 +22,7 @@ export interface BetDto {
     quote_total?: number;
     gain?: number;
     user?: UserDto;
+    matchsSelected?: Array<MatchSelectedDto>;
 }
 export namespace BetDto {
     export type StateEnum = 'in_progress' | 'end' | 'not_init';

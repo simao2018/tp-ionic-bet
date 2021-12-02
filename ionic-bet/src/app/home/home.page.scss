@@ -1,6 +1,8 @@
 #container {
   display: block;
-  margin:150px 20px;
+  margin:10px 20px;
+  text-align: center;
+  padding-top: 10px;
 }
 
 #container strong {
@@ -28,6 +30,8 @@ ion-segment-button{
   margin-left: 10px;
 
   img{
-    height: 30px;
+    height: 45px;
+    padding-top: 10px;
+
   }
 }
