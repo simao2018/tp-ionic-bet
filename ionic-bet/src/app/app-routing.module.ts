@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'view-bet',
     loadChildren: () => import('./modal/view-bet/view-bet.module').then( m => m.ViewBetPageModule)
   },
+  {
+    path: 'profil',
+    loadChildren: () => import('./profil/profil.module').then( m => m.ProfilPageModule)
+  },
 
 
 ];
