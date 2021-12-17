@@ -1,6 +1,6 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
-  <ion-tabs *ngIf="authService.isConnected">
+  <ion-tabs *ngIf="AuthService.isConnected">
     <ion-tab-bar slot="bottom">
 
       <ion-tab-button tab="home">
@@ -10,7 +10,7 @@
 
       <ion-tab-button (click)="openBetModal()">
         <ion-icon name="cart-outline"></ion-icon>
-        <ion-badge>6</ion-badge>
+        <ion-badge>{{ getBetInProgressMatch() }}</ion-badge>
       </ion-tab-button>
 
       <ion-tab-button>

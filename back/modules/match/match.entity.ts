@@ -29,10 +29,10 @@ export class Match extends BaseEntity {
     @JoinColumn({ name: 'id_team_away' })
     team_away: Team;
 
-    @Column('varchar', { name: 'id_result', length: 35, nullable: true })
+    @Column('varchar', { name: 'id_result', length: 36, nullable: true })
     id_result?: string;
 
-    @OneToOne(() => Result)
+    @OneToOne(() => Result, { cascade: true, onDelete: 'SET NULL' })
     @JoinColumn({ name: 'id_result' })
     result?: Result;
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LoginPage } from '../../login/login.page';
+import { AuthService } from '../../../global/auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -9,8 +10,9 @@ import { LoginPage } from '../../login/login.page';
 })
 export class ToolbarComponent implements OnInit {
 
+  public AuthService = AuthService;
   constructor(
-    public modalController: ModalController
+    public modalController: ModalController,
   ) { }
 
   ngOnInit() { }

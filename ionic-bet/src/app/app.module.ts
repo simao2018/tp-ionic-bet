@@ -10,7 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomInterceptor } from '../global/interceptor.service';
 import { BASE_PATH } from '../providers/api-client.generated';
 import { ViewBetPageModule } from './modal/view-bet/view-bet.module';
-import { AuthService } from '../global/auth.service';
+import { AuthGuardService } from '../global/guards/guard.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +29,7 @@ import { AuthService } from '../global/auth.service';
     },
     { provide: BASE_PATH, useValue: 'http://localhost:3018' },
     { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },
-    AuthService
+    AuthGuardService,
   ],
   bootstrap: [AppComponent],
   exports: [],

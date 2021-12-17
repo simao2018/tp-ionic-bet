@@ -103,12 +103,12 @@ export class DatabaseService {
             },
             {
                 label: 'Bayern Munich FC',
-                logo: 'https://cdn.icon-icons.com/icons2/1018/PNG/256/Bayern_Munchen_icon-icons.com_75868.png',
+                logo: 'https://en.fodb.net/img/club/Germany/100/Bayern-Munich.png',
                 sigle: 'Bay FC'
             },
             {
                 label: 'Manchester city',
-                logo: 'https://www.gamesatlas.com/images/football/teams/england/manchester-city.png',
+                logo: 'https://i.pinimg.com/originals/64/57/6c/64576cec097efaf87058b26cfb842e1b.png',
                 sigle: 'Man City'
             },
             {

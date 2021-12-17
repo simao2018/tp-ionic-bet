@@ -5,9 +5,78 @@
         <h1>Mon pari</h1>
       </ion-label>
 
-      <ion-button color="light" (click)="closeModal()">
+      <ion-label *ngIf="betState" style="margin-top: 15px;width: 50%;">
+        <h1> {{ betState }} </h1>
+      </ion-label>
+
+      <ion-button *ngIf="launchBetType == 'save'" color="light" (click)="closeModal()">
         <ion-icon name="close-outline"></ion-icon>
       </ion-button>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <ion-list *ngIf="AuthUser.bets[0]?.matchsSelected">
+        <ion-item *ngFor="let item of AuthUser.bets[0].matchsSelected"
+          style="text-transform: lowercase;margin-bottom: 5px;"
+          [class]="getBorderResultColor(item.result, item.id_match)">
+          <ion-label>
+            <h2>{{ item.match?.team_home.label }} - {{ item.match?.team_away.label }}</h2>
+            <ion-label color="warning">
+              <h3>Resultat : {{ getTeamLabel(item) }}</h3>
+            </ion-label>
+            <ion-label color="warning"> {{ getQuoteSelected(item) }} </ion-label>
+            <div *ngIf="getResultMatchFinal(item.id_match)" class="d-flex">
+              <ion-label>Score du match :</ion-label> &nbsp;
+              <ion-label color="success">
+                {{
+                getResultMatchFinal(item.id_match).score_home }} - {{ getResultMatchFinal(item.id_match).score_away
+                }}
+              </ion-label>
+            </div>
+
+          </ion-label>
+          <ion-icon name="trash-bin-outline" (click)="removeMatchSelected(item.id)" *ngIf="launchBetType == 'save'">
+          </ion-icon>
+
+        </ion-item>
+      </ion-list>
+
+      <div style="margin-top: 20px;">
+        <ion-label> Côte total :
+          {{ getTotalQuote(AuthUser.bets[0]?.matchsSelected) |
+          number:'1.2-2' }}
+        </ion-label>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <ion-label>Crédit restant : {{ AuthUser.credit }} </ion-label>
+      </div>
+      <div style="margin-top: 20px;">
+        <ion-label>
+          <h2>Mise : {{ AuthUser.bets[0]?.mise | currency:'EUR' }}</h2>
+        </ion-label>
+
+        <ion-item>
+          <ion-range min="10" snaps [max]="AuthUser.credit" color="secondary" step="50" pin="true"
+            [(ngModel)]="AuthUser.bets[0].mise" (ionBlur)="calculCredit()">
+            <ion-label slot="start">10</ion-label>
+            <ion-label slot="end">{{ AuthUser.credit }}</ion-label>
+          </ion-range>
+        </ion-item>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <ion-label> Gains potentiel : {{ getPotentialWin(AuthUser.bets[0]?.matchsSelected,
+          AuthUser.bets[0]?.mise) | currency:'EUR' }} </ion-label>
+      </div>
+
+      <div style="margin-top: 50px;">
+        <ion-button expand="block" style="height: 68px;" color="success" [disabled]="!AuthUser.bets[0].mise"
+          (click)="launchBet(launchBetType)" [disabled]="loading">{{
+          btn_validate }}
+          <ion-spinner *ngIf="loading" name="Crescent"></ion-spinner>
+        </ion-button>
+      </div>
     </div>
 
   </div>

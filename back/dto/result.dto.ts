@@ -11,6 +11,12 @@ export class ResultDto {
 
     @ApiPropertyOptional({ enum: ResultType })
     type: ResultType;
+
+    @ApiPropertyOptional()
+    score_home?: number;
+
+    @ApiPropertyOptional()
+    score_away?: number;
 }
 
 

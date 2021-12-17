@@ -11,6 +11,9 @@ encoder.ts
 git_push.sh
 index.ts
 model/betDto.ts
+model/genericResponse.ts
+model/getBetAndMatchComputer.ts
+model/getBetResponse.ts
 model/getBetsResponse.ts
 model/getLoginRequest.ts
 model/getMatchList.ts

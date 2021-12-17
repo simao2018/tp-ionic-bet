@@ -101,13 +101,13 @@ import { ApiModule, Configuration } from '';
     providers: [
       {
         provide: Configuration,
-        useFactory: (authService: AuthService) => new Configuration(
+        useFactory: (globalService: GlobalService) => new Configuration(
           {
             basePath: environment.apiUrl,
-            accessToken: authService.getAccessToken.bind(authService)
+            accessToken: globalService.getAccessToken.bind(globalService)
           }
         ),
-        deps: [AuthService],
+        deps: [GlobalService],
         multi: false
       }
     ],

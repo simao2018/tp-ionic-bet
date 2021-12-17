@@ -64,6 +64,7 @@ export class UserService {
             const payload: JwtPayload = {
                 id: userResponse.id,
                 email: userResponse.email,
+                credit: userResponse.credit,
             }
 
             const jwt = await this.jwtService.signAsync(payload);

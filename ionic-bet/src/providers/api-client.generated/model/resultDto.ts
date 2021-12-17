@@ -15,6 +15,8 @@ export interface ResultDto {
     id?: string;
     value?: ResultDto.ValueEnum;
     type?: ResultDto.TypeEnum;
+    score_home?: number;
+    score_away?: number;
 }
 export namespace ResultDto {
     export type ValueEnum = 'home' | 'away' | 'draw' | 'UNSET';

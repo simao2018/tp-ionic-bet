@@ -1,4 +1,7 @@
 export * from './betDto';
+export * from './genericResponse';
+export * from './getBetAndMatchComputer';
+export * from './getBetResponse';
 export * from './getBetsResponse';
 export * from './getLoginRequest';
 export * from './getMatchList';

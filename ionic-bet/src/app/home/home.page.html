@@ -2,8 +2,8 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <h1>Commencez vos paris</h1>
-    <ion-segment color="success" *ngFor="let match of matchList;let index=index;" (ionChange)="segmentChanged($event)"
-      value="sunny">
+    <ion-segment color="success" *ngFor="let match of matchList;let index=index;"
+      (ionChange)="segmentChanged($event, match, index)" value="sunny">
       <ion-segment-button value="{{ match.id_team_home }}">
         <img [src]="match.team_home.logo" alt="logo" />
         <ion-label>{{ match.quote_home }}</ion-label>

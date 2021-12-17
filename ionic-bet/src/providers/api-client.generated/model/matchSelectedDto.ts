@@ -20,5 +20,7 @@ export interface MatchSelectedDto {
     match?: MatchDto;
     bet?: BetDto;
     result?: ResultDto;
+    id_result?: string;
+    id_bet?: string;
 }
 

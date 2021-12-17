@@ -27,7 +27,7 @@ const PATH = process.cwd()
         `${PATH}/entities/**/*.entity{.ts,.js}`, `${PATH}/**/**/*.entity{.ts,.js}`
       ],
       synchronize: true,
-      // logging: true,
+      logging: false,
     }),
     UserModule,
     TypeOrmModule.forFeature([User]),

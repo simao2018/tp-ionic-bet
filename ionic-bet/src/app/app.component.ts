@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { AuthService } from '../global/auth.service';
+import { BasePage } from '../global/base.page';
+import { BetDto } from '../providers/api-client.generated';
 import { LoginPage } from './login/login.page';
 import { ViewBetPage } from './modal/view-bet/view-bet.page';
 
@@ -10,15 +12,17 @@ import { ViewBetPage } from './modal/view-bet/view-bet.page';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent extends BasePage {
+
+  AuthService = AuthService;
   constructor(
     public modalController: ModalController,
     public router: Router,
-    public authService: AuthService,
-  ) { }
+  ) {
+    super();
+  }
 
   ngOnInit() {
-    console.log('auth : ', this.authService.isConnected)
   }
 
   async openBetModal() {
@@ -29,7 +33,15 @@ export class AppComponent {
       showBackdrop: true,
       swipeToClose: true,
     });
-    return await modal.present();
+
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+    if (data) {
+      this.setConnectedUser();
+    }
+
+    return;
   }
 
 }

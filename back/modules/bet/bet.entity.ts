@@ -19,7 +19,7 @@ export enum BetResult {
 @Entity({ name: 'bet' })
 export class Bet extends BaseEntity {
 
-    @OneToMany(() => MatchSelected, match_selected => match_selected.bet)
+    @OneToMany(() => MatchSelected, match_selected => match_selected.bet, { cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
     matchs_selected: MatchSelected[];
 
     @ManyToOne(() => User, user => user.bets)
@@ -69,8 +69,7 @@ export class Bet extends BaseEntity {
         this.id_user = dto.id_user;
 
         if (dto.matchsSelected) {
-            if (!this.matchs_selected?.length)
-                this.matchs_selected = [];
+            this.matchs_selected = [];
 
             for (const item of dto.matchsSelected) {
                 const match_selected = new MatchSelected();

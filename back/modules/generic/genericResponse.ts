@@ -16,5 +16,6 @@ export class GenericResponse {
         this.success = false;
 
         this.message = error.message;
+        console.log("🚀 ~ handleError ~ this.message", this.message)
     }
 }
