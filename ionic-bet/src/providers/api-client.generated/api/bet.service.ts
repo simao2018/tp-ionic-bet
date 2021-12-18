@@ -20,12 +20,17 @@ import { Observable }                                        from 'rxjs';
 
 import { BetDto } from '../model/models';
 import { GetBetAndMatchComputer } from '../model/models';
+import { GetBetRequest } from '../model/models';
 import { GetBetResponse } from '../model/models';
 import { GetBetsResponse } from '../model/models';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
+
+export interface GetBetsRequestParams {
+    getBetRequest: GetBetRequest;
+}
 
 export interface SaveBetRequestParams {
     betDto: BetDto;
@@ -98,13 +103,18 @@ export class BetService {
 
     /**
      * get all bets
+     * @param requestParameters
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getBets(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<GetBetsResponse>;
-    public getBets(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<GetBetsResponse>>;
-    public getBets(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<GetBetsResponse>>;
-    public getBets(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
+    public getBets(requestParameters: GetBetsRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<GetBetsResponse>;
+    public getBets(requestParameters: GetBetsRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<GetBetsResponse>>;
+    public getBets(requestParameters: GetBetsRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<GetBetsResponse>>;
+    public getBets(requestParameters: GetBetsRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
+        const getBetRequest = requestParameters.getBetRequest;
+        if (getBetRequest === null || getBetRequest === undefined) {
+            throw new Error('Required parameter getBetRequest was null or undefined when calling getBets.');
+        }
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -121,6 +131,15 @@ export class BetService {
         }
 
 
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
 
         let responseType_: 'text' | 'json' = 'json';
         if(localVarHttpHeaderAcceptSelected && localVarHttpHeaderAcceptSelected.startsWith('text')) {

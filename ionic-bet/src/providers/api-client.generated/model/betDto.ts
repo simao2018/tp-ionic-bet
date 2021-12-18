@@ -16,6 +16,7 @@ import { MatchSelectedDto } from './matchSelectedDto';
 export interface BetDto { 
     id?: string;
     id_user?: string;
+    ref?: string;
     state?: BetDto.StateEnum;
     result?: BetDto.ResultEnum;
     mise?: number;

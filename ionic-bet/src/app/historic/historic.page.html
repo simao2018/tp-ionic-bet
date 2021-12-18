@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mon historique de paris</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ng-container *ngIf="betList?.length; else noBet">
+      <ion-item *ngFor="let bet of betList">
+        <ion-label>
+          <h2>reférence : {{ bet.ref }}</h2>
+          <h3>mise : {{ bet.mise }}</h3>
+          <p> statut : {{ bet.result }} </p>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+
+    <ng-template #noBet>
+      <ion-label>Aucun paris pour le moment</ion-label>
+    </ng-template>
+
+  </div>
+</ion-content>

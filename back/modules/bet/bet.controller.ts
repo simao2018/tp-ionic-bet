@@ -1,14 +1,16 @@
-import { Body, Controller, Get, HttpCode, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, HttpCode, Param, Post, Query } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { GenericResponse } from "../generic/genericResponse";
+import { FindManyOptions, Repository } from "typeorm";
 import { User } from "../user/user.entity";
-import { BetDto, GetBetAndMatchComputer, GetBetResponse, GetBetsResponse } from "./bet.dto";
+import { BetDto, GetBetAndMatchComputer, GetBetRequest, GetBetResponse, GetBetsResponse } from "./bet.dto";
 import { Bet, BetResult, BetState } from "./bet.entity";
 import { Result, ResultType } from "../../entities/result.entity";
 import { MatchResult } from "../../../shared/constant";
 import { Match } from "../match/match.entity";
+import { v4 as guid } from 'uuid';
+
+
 
 @ApiTags('bet')
 @Controller('bet')
@@ -25,11 +27,16 @@ export class BetController {
     @Get()
     @ApiOperation({ summary: 'get all bets', operationId: 'getBets' })
     @ApiResponse({ status: 200, description: 'get all bets', type: GetBetsResponse })
-    async getAllBets(): Promise<GetBetsResponse> {
+    async getAllBets(@Body() request: GetBetRequest): Promise<GetBetsResponse> {
         const response = new GetBetsResponse();
         try {
 
-            const getResponse = await this.betRepository.find();
+            let findOptions: FindManyOptions<Bet>;
+
+            if (request && request.id_user)
+                findOptions = { where: { id_user: request.id_user } };
+
+            const getResponse = await this.betRepository.find(findOptions);
 
             response.bets = getResponse ? getResponse.map(x => x.toDto()) : [];
             response.success = true;
@@ -45,13 +52,18 @@ export class BetController {
     @ApiResponse({ status: 200, description: 'save bet', type: GetBetResponse })
     @HttpCode(200)
     async saveBet(@Body() betRequest: BetDto): Promise<GetBetResponse> {
-        console.log("🚀 ~ saveBet ~ betRequest", betRequest)
+        // console.log("🚀 ~ saveBet ~ betRequest", betRequest)
         const response = new GetBetResponse();
         try {
 
             const bet = new Bet();
             betRequest.state = BetState.IN_PROGRESS;
+
+            betRequest.ref = guid();
+            console.log("🚀 ~ saveBet ~ betRequest.ref", betRequest.ref)
+
             bet.fromDto(betRequest);
+
             const betResponse = await this.betRepository.save(bet);
 
             const userResponse = await this.userRepository.findOne(betRequest.id_user);
@@ -110,12 +122,13 @@ export class BetController {
                 response.matchs = getMatchBetOn;
 
 
-                betResponse.matchs_selected
 
                 betResponse.result = getMatchBetOn.every(x => betResponse.matchs_selected.every(y => x.result.value === y.result.value)) ? BetResult.WIN : BetResult.LOST;
-                console.log("🚀 ~ simulateMatch ~ betResponse.result", betResponse.result)
+                betResponse.state = BetState.END;
 
-                response.bet = betResponse.toDto();
+                const betResponseSave = await this.betRepository.save(betResponse);
+
+                response.bet = betResponseSave.toDto();
                 response.success = true;
 
             }

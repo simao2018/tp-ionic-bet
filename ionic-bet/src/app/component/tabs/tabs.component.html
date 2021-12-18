@@ -1,0 +1,19 @@
+<ion-tab-bar slot="bottom">
+
+    <ion-tab-button tab="home">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Accueil</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="openBetModal()">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge style="min-width: 17px !important;font-size: 13px;">{{ AppService.matchSelectedCount?.value }}
+        </ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="historic">
+        <ion-icon name="reader-outline"></ion-icon>
+        <ion-label>Mes paris</ion-label>
+    </ion-tab-button>
+
+</ion-tab-bar>

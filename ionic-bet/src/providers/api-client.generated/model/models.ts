@@ -1,6 +1,7 @@
 export * from './betDto';
 export * from './genericResponse';
 export * from './getBetAndMatchComputer';
+export * from './getBetRequest';
 export * from './getBetResponse';
 export * from './getBetsResponse';
 export * from './getLoginRequest';

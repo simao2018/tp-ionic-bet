@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { AppService } from '../../global/app.service';
 import { BasePage } from '../../global/base.page';
 import { BetDto, BetService, MatchDto, ResultDto, UserDto } from '../../providers/api-client.generated';
 import { MatchService } from '../../providers/api-client.generated/api/match.service';
@@ -19,6 +20,7 @@ export class HomePage extends BasePage {
   user: UserDto;
   constructor(
     private matchService: MatchService,
+    public appService: AppService,
   ) {
     super();
   }
@@ -58,12 +60,12 @@ export class HomePage extends BasePage {
       id_match: match.id,
       result: { type: ResultDto.TypeEnum.User, value: resultValue },
       match: match,
-    })
+    });
+
+    AppService.matchSelectedCount.next(this.matchSelectedList?.length);
 
     if (this.matchSelectedList) {
-      this.AuthUser.bets.find(x => x.state === BetDto.StateEnum.InProgress).matchsSelected = this.matchSelectedList;
-
-
+      AppService.AuthUser.bets.find(x => x.state === BetDto.StateEnum.InProgress).matchsSelected = this.matchSelectedList;
     }
   }
 

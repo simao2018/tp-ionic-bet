@@ -29,6 +29,9 @@ export class Bet extends BaseEntity {
     @Column('varchar', { name: 'id_user', length: 36 })
     id_user: string;
 
+    @Column('varchar', { name: 'ref', nullable: true })
+    ref: string;
+
 
     @Column('enum', { name: 'state', enum: BetState, default: BetState.NOT_INIT })
     state: BetState;
@@ -55,6 +58,7 @@ export class Bet extends BaseEntity {
             gain: this.gain,
             id_user: this.id_user,
             user: this.user ? this.user.toDto() : null,
+            ref: this.ref,
             matchsSelected: this.matchs_selected ? this.matchs_selected.map(x => x.toDto()) : []
         }
     }
@@ -67,6 +71,7 @@ export class Bet extends BaseEntity {
         this.quote_total = dto.quote_total;
         this.gain = dto.gain;
         this.id_user = dto.id_user;
+        this.ref = dto.ref;
 
         if (dto.matchsSelected) {
             this.matchs_selected = [];

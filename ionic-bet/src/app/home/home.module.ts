@@ -7,6 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { MatchService } from '../../providers/api-client.generated/api/match.service';
 import { ToolbarModule } from '../component/toolbar/toolbar.module';
+import { AppService } from '../../global/app.service';
 
 
 @NgModule({
@@ -18,5 +19,6 @@ import { ToolbarModule } from '../component/toolbar/toolbar.module';
     HomePageRoutingModule
   ],
   declarations: [HomePage],
+  providers: [AppService],
 })
 export class HomePageModule { }

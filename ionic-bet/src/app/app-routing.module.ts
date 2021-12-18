@@ -31,6 +31,12 @@ const routes: Routes = [
     loadChildren: () => import('./profil/profil.module').then(m => m.ProfilPageModule),
     canActivate: [AuthGuardService]
   },
+  {
+    path: 'historic',
+    loadChildren: () => import('./historic/historic.module').then(m => m.HistoricPageModule),
+    canActivate: [AuthGuardService]
+  },
+
 
 
 ];

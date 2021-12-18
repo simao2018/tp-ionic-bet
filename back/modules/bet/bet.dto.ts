@@ -11,6 +11,9 @@ export class BetDto {
     @ApiPropertyOptional()
     id_user?: string;
 
+    @ApiPropertyOptional()
+    ref?: string;
+
     @ApiPropertyOptional({ enum: BetState })
     state?: BetState;
 
@@ -49,4 +52,9 @@ export class GetBetAndMatchComputer extends GenericResponse {
 
     @ApiPropertyOptional({ type: MatchDto, isArray: true })
     matchs?: MatchDto[];
+}
+
+export class GetBetRequest {
+    @ApiPropertyOptional({ description: 'get bet by id_user' })
+    id_user: string;
 }

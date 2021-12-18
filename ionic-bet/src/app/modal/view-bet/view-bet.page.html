@@ -15,16 +15,16 @@
     </div>
 
     <div style="margin-top: 50px;">
-      <ion-list *ngIf="AuthUser.bets[0]?.matchsSelected">
-        <ion-item *ngFor="let item of AuthUser.bets[0].matchsSelected"
+      <ion-list *ngIf="authUser.bets[0]?.matchsSelected">
+        <ion-item *ngFor="let item of authUser.bets[0].matchsSelected"
           style="text-transform: lowercase;margin-bottom: 5px;"
           [class]="getBorderResultColor(item.result, item.id_match)">
           <ion-label>
             <h2>{{ item.match?.team_home.label }} - {{ item.match?.team_away.label }}</h2>
             <ion-label color="warning">
-              <h3>Resultat : {{ getTeamLabel(item) }}</h3>
+              <h3>Resultat : {{ appService.getTeamLabel(item) }}</h3>
             </ion-label>
-            <ion-label color="warning"> {{ getQuoteSelected(item) }} </ion-label>
+            <ion-label color="warning"> {{ appService.getQuoteSelected(item) }} </ion-label>
             <div *ngIf="getResultMatchFinal(item.id_match)" class="d-flex">
               <ion-label>Score du match :</ion-label> &nbsp;
               <ion-label color="success">
@@ -43,35 +43,39 @@
 
       <div style="margin-top: 20px;">
         <ion-label> Côte total :
-          {{ getTotalQuote(AuthUser.bets[0]?.matchsSelected) |
+          {{ appService.getTotalQuote(authUser.bets[0]?.matchsSelected) |
           number:'1.2-2' }}
         </ion-label>
       </div>
 
       <div style="margin-top: 20px;">
-        <ion-label>Crédit restant : {{ AuthUser.credit }} </ion-label>
+        <ion-label>Crédit restant : {{ authUser.credit }} </ion-label>
       </div>
       <div style="margin-top: 20px;">
         <ion-label>
-          <h2>Mise : {{ AuthUser.bets[0]?.mise | currency:'EUR' }}</h2>
+          <h2>Mise : {{ authUser.bets[0]?.mise | currency:'EUR' }}</h2>
         </ion-label>
 
         <ion-item>
-          <ion-range min="10" snaps [max]="AuthUser.credit" color="secondary" step="50" pin="true"
-            [(ngModel)]="AuthUser.bets[0].mise" (ionBlur)="calculCredit()">
+          <ion-range min="10" snaps [max]="authUser.credit" color="secondary" step="50" pin="true"
+            [(ngModel)]="authUser.bets[0].mise" (ionBlur)="appService.calculCredit()">
             <ion-label slot="start">10</ion-label>
-            <ion-label slot="end">{{ AuthUser.credit }}</ion-label>
+            <ion-label slot="end">{{ authUser.credit }}</ion-label>
           </ion-range>
         </ion-item>
       </div>
 
       <div style="margin-top: 20px;">
-        <ion-label> Gains potentiel : {{ getPotentialWin(AuthUser.bets[0]?.matchsSelected,
-          AuthUser.bets[0]?.mise) | currency:'EUR' }} </ion-label>
+        <ion-label> Gains potentiel : {{ appService.getPotentialWin(authUser.bets[0]?.matchsSelected,
+          authUser.bets[0]?.mise) | currency:'EUR' }} </ion-label>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <ion-label *ngIf="authUser.bets[0].ref">reférence : {{ authUser.bets[0].ref }}</ion-label>
       </div>
 
       <div style="margin-top: 50px;">
-        <ion-button expand="block" style="height: 68px;" color="success" [disabled]="!AuthUser.bets[0].mise"
+        <ion-button expand="block" style="height: 68px;" color="success" [disabled]="!authUser.bets[0].mise"
           (click)="launchBet(launchBetType)" [disabled]="loading">{{
           btn_validate }}
           <ion-spinner *ngIf="loading" name="Crescent"></ion-spinner>

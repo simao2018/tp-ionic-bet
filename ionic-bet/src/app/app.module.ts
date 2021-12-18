@@ -11,6 +11,7 @@ import { CustomInterceptor } from '../global/interceptor.service';
 import { BASE_PATH } from '../providers/api-client.generated';
 import { ViewBetPageModule } from './modal/view-bet/view-bet.module';
 import { AuthGuardService } from '../global/guards/guard.service';
+import { TabModule } from './component/tabs/tabs.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { AuthGuardService } from '../global/guards/guard.service';
     AppRoutingModule,
     HttpClientModule,
     ViewBetPageModule,
+    TabModule,
   ],
   providers: [
     {

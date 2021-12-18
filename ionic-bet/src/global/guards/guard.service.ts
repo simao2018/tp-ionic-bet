@@ -15,7 +15,6 @@ export class AuthGuardService implements CanActivate {
 
     async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
         this.refreshAuthTokenAccess();
-        console.log(AuthService.currentUser);
         if (!AuthService.isConnected) {
             this._router.navigate(['/login']);
             return false;
